@@ -7,7 +7,7 @@ const GeneroComponent = ({generoActual,setGenero}: {generoActual: Estado,setGene
     const gestionarEstado = () =>{
         const posicion = generoActual.pos
         let nextpos: number;
-        if(posicion == 2){
+        if(posicion == 3){
             nextpos = 0
         }else {
         nextpos = posicion+1
