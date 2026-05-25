@@ -13,3 +13,9 @@
     border-radius: 1px;
     background-color: rgb(90, 89, 89);
 }
+
+.paginas {
+    display: flex;
+    flex-direction: row;
+    color: black;
+}

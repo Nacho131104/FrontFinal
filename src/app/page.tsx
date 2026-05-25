@@ -59,7 +59,9 @@ const Home = () =>{
             {loading && (<p>Loading ....</p>)}
             {charactersData && charactersData.results.map((r)=>{
                 return (
+                  <div  key={r.id} onClick={()=>{router.push(`/character/${r.id}`)}}>
                     <CharacterSerie key= {r.id} personaje={r}></CharacterSerie>
+                  </div>
                 )
             })}
 

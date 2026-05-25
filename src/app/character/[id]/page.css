@@ -1,0 +1,20 @@
+
+.charactersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white; 
+    align-items: center;
+    padding: 10px; 
+    border-radius: 2px;
+    gap: 10px;
+}
+
+.charactersContainer h1 {
+    color: black;
+}
+
+.charactersContainer button {
+    background-color: rgb(200, 63, 63);
+    border-radius: 5px
+}
