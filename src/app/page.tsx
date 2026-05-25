@@ -27,17 +27,49 @@ const Home = () =>{
     const [estado, setEstado] = useState<number>(0)
     const [genero, setGenero] = useState<number>(0)
 
+    const [ejecutarEstado, setEjecutarEstado] = useState<boolean>(false)
+    const [ejecutarGenero, setEjecutarGenero] = useState<boolean>(false)
+
+    const applyEstado= async() =>{
+        if(!ejecutarEstado && !ejecutarGenero){
+          setEjecutarEstado(true)
+          const status = estados.find((e)=>e.pos== estado)
+          const filtro = status?.name
+          await api.get(`/character/?status=${filtro}`).then((e)=>{
+            setCharactersData(e.data)
+          })
+        }else if (ejecutarEstado){
+            setEjecutarEstado(false)
+        }
+    }
+
+    const applyGenero = async () => {
+          if(!ejecutarEstado && !ejecutarGenero){
+            setEjecutarGenero(true)
+            const genero = generos.find((e)=>e.pos== estado)
+            const filtro = genero?.name
+            await api.get(`/character/?gender=${filtro}`).then((e)=>{
+              setCharactersData(e.data)
+            })
+        }else if (ejecutarGenero){
+            setEjecutarGenero(false)
+        }
+    }
+
     const router = useRouter()
 
     const [id, setId]=useState<number|null>(null)
 
     const fetchCharacters = async ()=>{
-         await api.get(`/character?page=${page}`).then((e)=>{
+      if (!ejecutarEstado && !ejecutarGenero){
+
+        await api.get(`/character?page=${page}`).then((e)=>{
             const {data}:{data:Response} = e;
             setCharactersData(data)
         }).finally(()=>{
             setLoading(false)
         })
+      }
     }
 
 
@@ -45,13 +77,23 @@ const Home = () =>{
         fetchCharacters()
     },[page])
 
+    useEffect(()=>{
+      fetchCharacters()
+    },[ejecutarEstado])
+
     return (
       <div className="principalContainer"> 
           <div className="filtrosContainer">
               <h1>Filtros de Busqueda</h1>
               <div className="filtros">
-                <EstadoComponent estadoActual= {estados.find((e)=> e.pos === estado)!} setEstado={(estado)=>setEstado(estado)}></EstadoComponent>
-                <GeneroComponent generoActual={generos.find((g)=>g.pos== genero)!} setGenero={(genero)=>{setGenero(genero)}}></GeneroComponent>
+                <div className="filtroboton">
+                  <EstadoComponent estadoActual= {estados.find((e)=> e.pos === estado)!} setEstado={(estado)=>setEstado(estado)}></EstadoComponent>
+                  <button onClick={()=>{applyEstado()}}>{!ejecutarEstado ? (<p>Aplicar</p>):(<p>Quitar</p>)}</button>
+                </div>
+                <div className="filtroboton">
+                  <GeneroComponent generoActual={generos.find((g)=>g.pos== genero)!} setGenero={(genero)=>{setGenero(genero)}}></GeneroComponent>
+                  <button onClick={()=>{applyGenero()}}>{!ejecutarGenero ? (<p>Aplicar</p>):(<p>Quitar</p>)}</button>
+                </div>
               </div>
           </div>
           <div className = "charactersContainer">
