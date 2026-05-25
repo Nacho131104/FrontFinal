@@ -1,0 +1,15 @@
+.paginadorContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content:center;
+    background-color: white;
+}
+
+.paginadorContainer button {
+    padding: 3px;
+    gap: 3px;
+    border-radius: 1px;
+    background-color: rgb(90, 89, 89);
+}

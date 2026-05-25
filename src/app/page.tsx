@@ -5,6 +5,7 @@ import {useState, useEffect} from "react"
 import type {Character, Response } from "../types/types"
 import api from "@/api/api"
 import CharacterSerie from "./components/character/character"
+import Paginador from "./components/paginador/paginador";
 
 const Home = () =>{
     const [charactersData, setCharactersData] = useState<Response|null>(null)
@@ -33,11 +34,13 @@ const Home = () =>{
         <div className = "charactersContainer">
             <h1> Welcome to characters</h1>
             {loading && (<p>Loading ....</p>)}
-            {charactersData && charactersData.results.map((r)=>{
+            {charactersData && charactersData.results.map((r,index)=>{
                 return (
                     <CharacterSerie key= {r.id} personaje={r}></CharacterSerie>
                 )
             })}
+
+            <Paginador next={!!charactersData?.info.next} prev={!!charactersData?.info.prev} page={page} setPage={(e)=>{setPage(e)}}/>
         </div>
     );
 }
