@@ -7,6 +7,7 @@
     background-color: rgb(52, 174, 235);
     border-radius: 10px;
     cursor:pointer;
+    padding: 20px;
 }
 .CharacterInfoText{
     display: flex;
@@ -27,4 +28,9 @@
 
 .text {
     color: black;
+}
+
+.CharacterInfoText img {
+    border-radius: 10px;
+    border-color: black;
 }

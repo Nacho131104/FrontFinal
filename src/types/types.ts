@@ -12,8 +12,10 @@ export type Response = {
     results: Character[]
 }
 
-
-
+export type Estado ={
+    name: String,
+    pos: number,
+}
 
 export type Character = {
     id: number,

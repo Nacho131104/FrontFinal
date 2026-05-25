@@ -5,7 +5,7 @@
     background-color: aqua;
     align-items: center;
     padding: 10px; 
-    border-radius: 2px;
+    border-radius: 20px;
     gap: 10px;
 }
 
@@ -16,4 +16,35 @@
 .charactersContainer button {
     background-color: rgb(200, 63, 63);
     border-radius: 5px
+}
+
+.filtrosContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: aqua;
+  color: black;
+  height: 120px;
+  width: 100%;
+  gap:20px;
+
+}
+.principalContainer {
+  display: flex;
+  flex:1;
+  background-color: white;
+  color:black;
+  justify-content:flex-start;
+  align-items:center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.filtros {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
 }

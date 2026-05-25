@@ -11,8 +11,6 @@ const CharacterSerie = ( {personaje}:{personaje: Character} ) =>{
         <div className="CharacterInfo">
             <h1  onClick={()=>{router.push(`/character/${personaje.id}`)}} className="text">{personaje.name}</h1>
             <div className="characterInfoSub">
-
-                <img src={personaje.image}></img>
                 <div className="CharacterInfoText">
                     <p> Status: {personaje?.status}</p>
                     <p> Species: {personaje?.species}</p>
