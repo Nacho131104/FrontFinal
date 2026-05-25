@@ -51,7 +51,7 @@ const Home = () =>{
     }
 
     const applyGenero = async () => {
-          if(!ejecutarEstado && !ejecutarGenero && ejecutarId){
+          if(!ejecutarEstado && !ejecutarGenero && !ejecutarId){
             setEjecutarGenero(true)
 
     
